@@ -1,0 +1,11 @@
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\bin\Debug\netcoreapp2.1\CoreEscuela.deps.json
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\bin\Debug\netcoreapp2.1\CoreEscuela.runtimeconfig.json
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\bin\Debug\netcoreapp2.1\CoreEscuela.runtimeconfig.dev.json
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\bin\Debug\netcoreapp2.1\CoreEscuela.dll
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\bin\Debug\netcoreapp2.1\CoreEscuela.pdb
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.csprojAssemblyReference.cache
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.csproj.CoreCompileInputs.cache
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.AssemblyInfoInputs.cache
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.AssemblyInfo.cs
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.dll
+C:\proyectos\Platzi\FundamentosC#\CoreEscuela\obj\Debug\netcoreapp2.1\CoreEscuela.pdb
