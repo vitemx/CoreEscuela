@@ -39,15 +39,14 @@ namespace CoreEscuela.App
 
                         for (int i = 0; i < 5; i++)
                         {
-                            var ev = new Evaluaciones
+                            var ev = new Evaluación
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-
                                 Nota = (float)(5 * rnd.NextDouble()),
                                 Alumno = alumno
                             };
-                            alumno.Evaluacion.Add(ev);
+                            alumno.Evaluaciones.Add(ev);
                         }
                     }
                 }
