@@ -7,25 +7,26 @@ using static System.Console;
 
 namespace CoreEscuela
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-        var engine = new EscuelaEngine();
-        engine.Inicializar();
-        Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");   
-        Printer.Beep(10000, cantidad:10);
-        ImpimirCursosEscuela(engine.Escuela);
-    }
-    private static void ImpimirCursosEscuela(Escuela escuela)
-    {
-        if (escuela?.Cursos != null)
+        static void Main(string[] args)
         {
-            foreach (var curso in escuela.Cursos)
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
+            Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");   
+            // Printer.Beep(10000, cantidad:10);
+            ImpimirCursosEscuela(engine.Escuela);
+            var listaObjetos = engine.GetObjetoEscuelas();
+        }
+        private static void ImpimirCursosEscuela(Escuela escuela)
+        {
+            if (escuela?.Cursos != null)
             {
-            WriteLine($"Nombre {curso.Nombre  }, Id  {curso.UniqueId}");
+                foreach (var curso in escuela.Cursos)
+                {
+                WriteLine($"Nombre {curso.Nombre  }, Id  {curso.UniqueId}");
+                }
             }
         }
     }
-  }
 }

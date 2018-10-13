@@ -2,7 +2,7 @@ using System;
 
 namespace CoreEscuela.Entidades
 {
-    public abstract class ObjetoEscuelaBase
+    public class ObjetoEscuelaBase
     {
         public string UniqueId { get; set; }
         public string Nombre { get; set; }
@@ -10,6 +10,11 @@ namespace CoreEscuela.Entidades
         public ObjetoEscuelaBase()
         {
             UniqueId = Guid.NewGuid().ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"{Nombre},{UniqueId}";
         }
     }
 }

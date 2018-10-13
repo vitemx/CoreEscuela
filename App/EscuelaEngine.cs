@@ -52,6 +52,25 @@ namespace CoreEscuela.App
                 }
             }
         }
+
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas()
+        {
+            var listaObj = new List<ObjetoEscuelaBase>();
+                listaObj.Add(Escuela);
+                listaObj.AddRange(Escuela.Cursos);
+
+                foreach (var curso in Escuela.Cursos)
+                {
+                    listaObj.AddRange(curso.Asignaturas);
+                    listaObj.AddRange(curso.Alumnos);
+
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
+                    }
+                }
+            return listaObj;
+        }
         private void CargarAsignaturas()
         {
             foreach (var curso in Escuela.Cursos)
