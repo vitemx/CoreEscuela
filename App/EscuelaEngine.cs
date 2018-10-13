@@ -16,7 +16,6 @@ namespace CoreEscuela.App
         {
             
         }
-
         public void Inicializar()
         {
             Escuela = new Escuela("Platzi Academy", 2012, TiposEscuela.Primaria,
@@ -26,7 +25,26 @@ namespace CoreEscuela.App
             CargarAsignaturas();
             CargarEvaluaciones();
         }
+        public List<ObjetoEscuelaBase> GetObjetoEscuelas()
+        {
+            var listaObj = new List<ObjetoEscuelaBase>();
+                listaObj.Add(Escuela);
+                listaObj.AddRange(Escuela.Cursos);
 
+                foreach (var curso in Escuela.Cursos)
+                {
+                    listaObj.AddRange(curso.Asignaturas);
+                    listaObj.AddRange(curso.Alumnos);
+
+                    foreach (var alumno in curso.Alumnos)
+                    {
+                        listaObj.AddRange(alumno.Evaluaciones);
+                    }
+                }
+            return listaObj;
+        }
+        
+        #region Metodos de Carga
         private void CargarEvaluaciones()
         {
             foreach (var curso in Escuela.Cursos)
@@ -53,24 +71,6 @@ namespace CoreEscuela.App
             }
         }
 
-        public List<ObjetoEscuelaBase> GetObjetoEscuelas()
-        {
-            var listaObj = new List<ObjetoEscuelaBase>();
-                listaObj.Add(Escuela);
-                listaObj.AddRange(Escuela.Cursos);
-
-                foreach (var curso in Escuela.Cursos)
-                {
-                    listaObj.AddRange(curso.Asignaturas);
-                    listaObj.AddRange(curso.Alumnos);
-
-                    foreach (var alumno in curso.Alumnos)
-                    {
-                        listaObj.AddRange(alumno.Evaluaciones);
-                    }
-                }
-            return listaObj;
-        }
         private void CargarAsignaturas()
         {
             foreach (var curso in Escuela.Cursos)
@@ -117,5 +117,6 @@ namespace CoreEscuela.App
                 c.Alumnos = GenerarAlumnosAlAzar(cantidadRandom);
             }
         }
+        #endregion
     }
 }

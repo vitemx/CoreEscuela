@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreEscuela.App;
 using CoreEscuela.Entidades;
 using CoreEscuela.Util;
@@ -17,6 +18,12 @@ namespace CoreEscuela
             // Printer.Beep(10000, cantidad:10);
             ImpimirCursosEscuela(engine.Escuela);
             var listaObjetos = engine.GetObjetoEscuelas();
+
+            var listaILugar = from obj in listaObjetos
+                            where obj is Alumno
+                            select (Alumno) obj;
+
+            // engine.Escuela.LimpiarLugar();
         }
         private static void ImpimirCursosEscuela(Escuela escuela)
         {
