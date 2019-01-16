@@ -18,21 +18,71 @@ namespace CoreEscuela
             var engine = new EscuelaEngine();
             engine.Inicializar();
             Printer.WriteTitle("BIENVENIDOS A LA ESCUELA");  
-            // Printer.Beep(10000, cantidad:10);
-            // ImpimirCursosEscuela(engine.Escuela);
-            Dictionary<int, string> diccionario = new Dictionary<int, string>();
+            
+            var reporteador = new Reporteador(engine.GetDiccionarioObjetos());
+            var evalList = reporteador.GetListaEvaluaciones();
+            var listaAsg = reporteador.GetListaAsignaturas();
+            var listaEvalXAsig = reporteador.GetDicEvaluaXAsig();
+            var listaPromXAsig = reporteador.GetPromeAlumnPorAsignatura();
+            var topFive = reporteador.TopFive("Matemáticas", 5 );
 
-            diccionario.Add(10, "JuanK");
-            diccionario.Add(23, "Lorem Ipsum");
+            Printer.WriteTitle("Captura una Evaluación por Consola");
+            var newEval = new Evaluación();
+            string nombre, notastring;
+            float nota;
+            
+            WriteLine("Ingrese el nombre de la evauación");
+            Printer.PresionEnter();
+            nombre = Console.ReadLine();
 
-            foreach (var keyValPair in diccionario)
+            if (string.IsNullOrWhiteSpace(nombre))
             {
-                System.Console.WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
+                throw new ArgumentException("El valor del nombre no puede estar vacio");
+                WriteLine("Saliendo del programa");
+            }
+            else
+            {
+                newEval.Nombre = nombre.ToLower();
+                WriteLine("El nombre de la evaluación ha sido ingresado correctamente");
             }
 
-            var dictmp = engine.GetDiccionarioObjetos();
+            WriteLine("Ingrese la nota de la evaluación");
+            Printer.PresionEnter();
+            notastring = Console.ReadLine();
 
-            engine.ImprimirDiccionario(dictmp, true);
+            if (string.IsNullOrWhiteSpace(notastring))
+            {
+               Printer.WriteTitle("El valor de la nota no puede estar vacio");
+               WriteLine("Saliendo del programa");
+            }
+            else
+            {
+                try
+                {
+                    newEval.Nota = float.Parse(notastring);
+                    if (newEval.Nota < 0 || newEval.Nota > 5)
+                    {
+                        throw new ArgumentOutOfRangeException("La nota debe estar entre 0 y 5");
+                    }
+                    WriteLine("La nota de la evaluación ha sido ingresado correctamente");
+                }
+                catch(ArgumentOutOfRangeException arge)
+                {
+                    WriteLine(arge.Message);
+                    WriteLine("Saliendo del programa");
+                }
+                catch(Exception)
+                {
+                    Printer.WriteTitle("El valor de la nota no es un numero válido");
+                    WriteLine("Saliendo del programa");
+                    throw;
+                }
+                finally
+                {
+                    Printer.WriteTitle("FINALLY");
+                    Printer.Beep(2500, 500, 3);
+                }
+            }
         }
 
     private static void AccionDelEvento(object sender, EventArgs e)

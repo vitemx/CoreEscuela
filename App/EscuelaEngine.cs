@@ -33,7 +33,7 @@ namespace CoreEscuela.App
             foreach (var objdic in dic)
             {
                 Printer.WriteTitle(objdic.Key.ToString());
-
+ 
                 foreach (var val in objdic.Value)
                 {
                     switch (objdic.Key)
